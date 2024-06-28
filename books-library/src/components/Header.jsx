@@ -1,10 +1,11 @@
-
+import Navbar from "./Navbar";
 
 function Header(){
 
     return(
         <header>
-            <h1>Books Library</h1>
+            <Navbar></Navbar>
+            {/* <h1>Books Library</h1>
         <nav>
             <ul>
                 <li></li>
@@ -12,7 +13,7 @@ function Header(){
                 <li></li>
                 <li></li>
             </ul>
-        </nav>
+        </nav> */}
         </header>
     );
 }
