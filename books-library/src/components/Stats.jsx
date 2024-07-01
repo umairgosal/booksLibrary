@@ -4,6 +4,7 @@ function Stats(){
 
     return(
         <div className="stats shadow">
+          {/* <div className="w-1 gri grid-cols-1"></div> */}
             <div className="stat place-items-center">
               <div className="stat-title">Downloads</div>
               <div className="stat-value">31K</div>

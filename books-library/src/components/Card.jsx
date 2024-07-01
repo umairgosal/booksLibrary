@@ -19,6 +19,7 @@ function Card(){
                 <div className="badge badge-outline">Fashion</div>
                 <div className="badge badge-outline">Products</div>
               </div>
+              <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1 p-1">Add to Read</button>
             </div>
         </div>
     );

@@ -13,8 +13,8 @@ function App() {
     <Header />
     <Component />
     <SearchBar />
-    <ToRead />
     <CardList />
+    <ToRead />
     <Footer />
     </>
   );

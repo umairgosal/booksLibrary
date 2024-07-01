@@ -14,7 +14,7 @@ function ToRead(){
   } 
     return(
       <>
-      {isBookRead} && 
+      {isBookRead}
         <ul className="menu bg-base-200 rounded-box shadow-md w-auto m-3">
             <li>
               <h2 className="menu-title">Books to read</h2>
