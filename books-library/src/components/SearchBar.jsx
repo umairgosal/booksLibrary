@@ -1,25 +1,33 @@
 import axios from "axios";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../store/slices/cardSlice";
+import { useState, useReducer } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchData } from "../store/slices/bookSlice";
 
 function SearchBar(){
     const [query, setQuery] = useState("")
-
     const key = "AIzaSyDTpcRPc-44RydvSTDu6Oh8lrSuw2vSE_Q"
 
     const saveQuery = (event) => {
         setQuery(event.target.value)
     }
-    const dispatch = useDispatch();
-    const state = useSelector((state)=> state);
-    console.log('State', state); 
-    // const fetchData = async (query_, key) => {
-    //     const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query_}&key=${key}`)
-    //     console.log(res.data)
-    // }
-    const handleSearch = () => { 
-        dispatch(fetchData())
+    const initialState = {
+        data: [],
+    }
+    const reducer = async (state, action) => {
+        if(action.type === 'fetchData'){
+                const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${action.payload}&key=${key}`)
+                console.log(res.data)
+                return [...state, action.data]
+        throw Error('unknown error')
+    }
+}
+    const [state, dispatch] = useReducer(reducer, initialState)
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        dispatch({type: 'fetchData',
+                  payload: query,
+        })
      }
 
 

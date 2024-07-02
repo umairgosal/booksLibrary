@@ -34,18 +34,20 @@ function Navbar() {
                   )}
                 </DisclosureButton>
               </div>
-              <div className="flex flex-1 items-center">
-                <div className="flex justify-start">
-                  <h1 className="text-gray-300 hover:bg-gray-700 hover:text-white justify-items-start">
-                    Books Library
-                  </h1>
-                </div>
-                <div className="flex flex-shrink-0 items-center ml-4">
-                  <img
-                    className="h-8 w-auto rounded-md"
-                    src={bookPic}
-                    alt="Your Company"
-                  />
+              <div className="flex flex-1 items-center justify-between">
+                <div className='flex flex-1'>
+                  <div className="flex flex-shrink-0 items-center ml-4">
+                    <img
+                      className="h-8 w-auto rounded-md"
+                      src={bookPic}
+                      alt="Your Company"
+                    />
+                  </div>
+                  <div className="flex justify-start">
+                    <h1 className="text-gray-300 hover:bg-gray-700 hover:text-white justify-items-start">
+                      Books Library
+                    </h1>
+                  </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
