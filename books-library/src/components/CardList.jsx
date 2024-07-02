@@ -1,23 +1,31 @@
 import Card from "./Card";
+import ToRead from "./ToRead";
+
 
 function CardList(){
 
+    // const imageLinks = [
+    //     {},
+    //     {},
+    // ]
+    // const bookTitle = [
+    //     {},
+    // ]
+    // const bookOverview = [
+    //     {},
+    // ]
+    // const genre = [
+    //     {},
+    // ]
+
+
     return(
         <>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {/* {response.map(()=> {
+        <li className="grid grid-flow-col" key={index}>
+            <Card ></Card>
+        </li>
+        })} */}
         </>
     );
 }

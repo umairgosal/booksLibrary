@@ -1,22 +1,23 @@
-import Component from './components/Component.jsx'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import ToRead from './components/ToRead.jsx';
-import CardList from './components/CardList.jsx';
-import SearchBar from './components/SearchBar.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/home/Home.jsx';
+import OurTeam from './pages/ourTeam/OurTeam.jsx'
+import TopSelling from './pages/topSelling/TopSelling.jsx'
+import RequestABook from './pages/requestABook/RequestABook.jsx'  
 
 
 function App() {
 
   return (
-    <>
-    <Header />
-    <Component />
-    <SearchBar />
-    <CardList />
-    <ToRead />
-    <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />}>
+          <Route path='/ourTeam' element={<OurTeam />}></Route>
+        </Route>
+        
+        <Route path='/topSelling' element={<TopSelling />}></Route>
+        <Route path='/requestABook' element={<RequestABook />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

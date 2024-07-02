@@ -1,11 +1,32 @@
-
+import axios from "axios";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../store/slices/cardSlice";
 
 function SearchBar(){
+    const [query, setQuery] = useState("")
+
+    const key = "AIzaSyDTpcRPc-44RydvSTDu6Oh8lrSuw2vSE_Q"
+
+    const saveQuery = (event) => {
+        setQuery(event.target.value)
+    }
+    const dispatch = useDispatch();
+    const state = useSelector((state)=> state);
+    console.log('State', state); 
+    // const fetchData = async (query_, key) => {
+    //     const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query_}&key=${key}`)
+    //     console.log(res.data)
+    // }
+    const handleSearch = () => { 
+        dispatch(fetchData())
+     }
+
 
     return(
         <form className="flex items-center bg-white border border-gray-200 rounded-2xl m-5 mb-10 shadow-md dark:bg-black dark:border-gray-700">
             <label className="input input-bordered flex items-center gap-96 m-4">
-                <input type="text" className="grow" placeholder="Enter the book name" />
+                <input type="text" className="grow" placeholder="Enter the book name" onChange={saveQuery}/>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -17,7 +38,7 @@ function SearchBar(){
                     clipRule="evenodd" />
                 </svg>
             </label>
-            <button className="btn btn-primary hover:border-b-sky-950">search</button>
+            <button className="btn btn-primary hover:border-b-sky-950" onClick={handleSearch}>search</button>
         </form>
     );
 }
