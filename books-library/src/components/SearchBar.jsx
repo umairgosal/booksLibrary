@@ -1,36 +1,40 @@
 import axios from "axios";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import Card from "./Card";
+import { initialState, reducer } from "./Reducers";
 // import { useDispatch, useSelector } from "react-redux";
 // import { fetchData } from "../store/slices/bookSlice";
 
 function SearchBar(){
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const {items, loading, error} = state
+    const [btnPress, setBtnPress] = useState(false)
     const [query, setQuery] = useState("")
+    const [bookData, setBookData] = useState([])
     const key = "AIzaSyDTpcRPc-44RydvSTDu6Oh8lrSuw2vSE_Q"
-
     const saveQuery = (event) => {
         setQuery(event.target.value)
     }
-    const initialState = {
-        data: [],
-    }
-    const reducer = async (state, action) => {
-        if(action.type === 'fetchData'){
-                const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${action.payload}&key=${key}`)
-                console.log(res.data)
-                return res.data
-            }
-        throw Error('unknown error')
-}
-    const [state, dispatch] = useReducer(reducer, initialState)
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-        dispatch({type: 'fetchData',
-                  payload: query,
-        })
-     }
-    console.log(state.data)
+    useEffect(()=>{
+        if(btnPress === true){
+        dispatch({type: 'progress'})
+
+        const handleSearch = async () => {
+            try{
+                let res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${key}&maxResults=14`)
+                setBookData(res.data.items)
+                console.log("error given", res?.data?.items)
+                dispatch({type: 'fetched', data: res.data})
+            }
+            catch(err) {
+                dispatch({type: 'error', error: err.message})
+            }
+        }
+        handleSearch()
+        
+        }
+    }, [btnPress])
 
 
     return(
@@ -49,9 +53,12 @@ function SearchBar(){
                         clipRule="evenodd" />
                     </svg>
                 </label>
-                <button className="btn btn-primary hover:border-b-sky-950" onClick={handleSearch}>search</button>
+                <button className="btn btn-primary hover:border-b-sky-950" onClick={(e)=>{
+                    e.preventDefault()
+                    setBtnPress(!btnPress)
+                }}>search</button>
             </form>
-            <Card state={state}></Card>
+            <Card book={bookData}></Card>
         </>
     );
 }

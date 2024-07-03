@@ -1,8 +1,9 @@
-import ToRead from "./ToRead";
 
+import react, { useState } from "react";
 
-function Card(props){
+const Card = ({book}) => {
 
+  const [newBook, setNewBook] = useState([])
     const addBook = () => {
     if(newBook.trim() !== ""){
       setToReadBooks(t => [...t, newBook])
@@ -10,27 +11,34 @@ function Card(props){
     }
   }
 
+  const dummyData = [book]
+  // console.log("state", book)
     return(
-       <div className="card bg-base-100 w-96 shadow-xl">
-            <figure>
+      <>
+      {/* {book} */}
+      {
+        book?.map((items)=>{
+          return(
+            <>
+            <div key={items.id} className="card bg-base-100 w-96 shadow-xl">
+              <figure>
               <img
-                src={props.state.imageLinks} // book image
+                src={items.volumeInfo.imageLinks.thumbnail} // book image
                 alt="img" />
             </figure>
             <div className="card-body">
               <h2 className="card-title">
-                {props.state.title} {/* book title */}
-                <div className="badge badge-secondary">NEW</div>
+                {items.volumeInfo.title.substring(0, 30)} {/* book title */}
               </h2>
-              <p>{props.state.categories}</p>
-              <div className="card-actions justify-end">  
-                <div className="badge badge-outline">Fashion</div>
-                <div className="badge badge-outline">Products</div>
-              </div>
-              <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1 p-1" >Add to Read</button>
             </div>
-        </div>
-    );
+            <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1 p-1" onClick={addBook}>Add to Read</button>
+            </div>
+            </>
+          )
+        })
+      }
+      </>
+    )
 }
 
 
