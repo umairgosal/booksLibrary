@@ -24,7 +24,6 @@ function SearchBar(){
             try{
                 let res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${key}&maxResults=14`)
                 setBookData(res.data.items)
-                console.log("error given", res?.data?.items)
                 dispatch({type: 'fetched', data: res.data})
             }
             catch(err) {

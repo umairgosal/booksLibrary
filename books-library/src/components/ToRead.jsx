@@ -1,39 +1,46 @@
 import { useState } from "react";
-import {nwBook} from "./Card"
+import { useSelector, useDispatch } from "react-redux";
+import { removeBook } from "../store/slices/bookSlice";
+
 
 
 function ToRead(){
-  const [newBook, setNewBook] = useState("")
-  const [toReadBooks, setToReadBooks] = useState(["one", "two", "three"])
+  // const [newBook, setNewBook] = useState("")
+  // const [toReadBooks, setToReadBooks] = useState(["one", "two", "three"])
+
+  const toReadBooks = useSelector((state)=>state?.book?.addToReadItems);
+  console.log("To Read",toReadBooks)
+  const dispatch = useDispatch()
 
 
-  const handleClick = (event) => {
-    setNewBook(event.target.value)
+  // const handleClick = (event) => {
+  //   setNewBook(event.target.value)
+  // }
+  const handleRemove = (items) => {
+    console.log("hello", items)
+
+    dispatch(removeBook(items?.id))
   }
-
-  const removeBook = (index)=>{
-    const updateBooks = toReadBooks.filter((_, i) => i !== index) 
-    setToReadBooks(updateBooks)
-  } 
-console.log(toReadBooks)
+  // const removeBook = (index)=>{
+  //   const updateBooks = toReadBooks.filter((_, i) => i !== index) 
+  //   setToReadBooks(updateBooks)
+  // } 
     return(
-      <>
-      {/* {isBookRead} */}
         <ul className="menu bg-base-200 rounded-box shadow-md w-auto m-3">
             <li>
               <h2 className="menu-title">Books to read</h2>
-              {toReadBooks.map((book, index)=> 
-                <ul className="w-96">
-                  <li className="grid grid-flow-col" key={index}><a>{book}</a>
+              <ul className="w-96">
+              {toReadBooks?.map((items)=>
+                  <li className="grid grid-flow-col" key={items.id}><a>{items?.volumeInfo?.title}</a>
                     {/* <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Add Book</button> */}
-                    <button onClick={()=>removeBook(index)} className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Remove Book</button>
+                    <button onClick={()=>handleRemove(items)} className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Remove Book</button>
                   </li>
 
-                </ul>
+
               )}
+              </ul>
             </li>
         </ul>
-        </>
     );
 }
 

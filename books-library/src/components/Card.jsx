@@ -1,25 +1,30 @@
-
-import react, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import  { useState } from "react";
+import { addToRead } from "../store/slices/bookSlice";
+import ToRead from "./ToRead";
 
 const Card = ({book}) => {
 
-  const [newBook, setNewBook] = useState([])
-    const addBook = () => {
-    if(newBook.trim() !== ""){
-      setToReadBooks(t => [...t, newBook])
-      setNewBook("")
-    }
+  // const booksToRead = useSelector((state)=>{state.book.value})
+  const dispatch = useDispatch()
+  const bookValue = useSelector((state)=>{state.book.value})
+  const [newBook, setNewBook] = useState("")
+  //   const addBook = () => {
+  //   if(newBook.trim() !== ""){
+  //     setToReadBooks(t => [...t, newBook])
+  //     setNewBook("")
+  //   }
+  // }
+  const handleClick = (items) => {
+    dispatch(addToRead(items))
   }
-
-  const dummyData = [book]
-  // console.log("state", book)
     return(
       <>
-      {/* {book} */}
+      
       {
         book?.map((items)=>{
           return(
-            <>
+          
             <div key={items.id} className="card bg-base-100 w-96 shadow-xl">
               <figure>
               <img
@@ -31,9 +36,10 @@ const Card = ({book}) => {
                 {items.volumeInfo.title.substring(0, 30)} {/* book title */}
               </h2>
             </div>
-            <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1 p-1" onClick={addBook}>Add to Read</button>
+            <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1 p-1" onClick={()=>handleClick(items)}>Add to Read</button>
+
             </div>
-            </>
+          
           )
         })
       }
