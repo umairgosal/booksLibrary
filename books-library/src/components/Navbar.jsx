@@ -17,16 +17,16 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-black">
+    <Disclosure as="nav" className="bg-gray-950">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-screen px-2 sm:px-6">
+          <div className="mx-auto max-w-screen px-2 sm:px-6 ">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
+                  <span className="sr-only font-poppins">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -36,7 +36,7 @@ function Navbar() {
               </div>
               <div className="flex flex-1 items-center justify-between">
                 <div className='flex flex-1'>
-                  <div className="flex flex-shrink-0 items-center ml-4">
+                  <div className="flex flex-shrink-0 items-center p-2">
                     <img
                       className="h-8 w-auto rounded-md"
                       src={bookPic}
@@ -47,6 +47,9 @@ function Navbar() {
                     <h1 className="text-gray-300 hover:bg-gray-700 hover:text-white justify-items-start">
                       Books Library
                     </h1>
+                  </div>
+                  <div>
+                    <img className='h-14 ml-6' src="https://d36urhup7zbd7q.cloudfront.net/anonymous_user/no_sig_172016534358/77fdb087-94c3-4287-b777-7ed9a72bf8d7/signoff.gif?ck=1720165343.58" alt="" />
                   </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeBook } from "../store/slices/bookSlice";
+import { Link } from "react-router-dom";
 
 
 
@@ -16,9 +17,8 @@ function ToRead(){
   // const handleClick = (event) => {
   //   setNewBook(event.target.value)
   // }
-  const handleRemove = (items) => {
-    console.log("hello", items)
 
+  const handleRemove = (items) => {
     dispatch(removeBook(items?.id))
   }
   // const removeBook = (index)=>{
@@ -31,12 +31,13 @@ function ToRead(){
               <h2 className="menu-title">Books to read</h2>
               <ul className="w-96">
               {toReadBooks?.map((items)=>
-                  <li className="grid grid-flow-col" key={items.id}><a>{items?.volumeInfo?.title}</a>
+                  <li className="flex flex-row justify-between items-center" key={items.id}><Link to={items?.accessInfo?.epub?.downloadLink} target="_blank">{items?.volumeInfo?.title}</Link>
                     {/* <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Add Book</button> */}
-                    <button onClick={()=>handleRemove(items)} className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Remove Book</button>
+                    <div className="row-span-2 flex justify-end">
+                      <button onClick={()=>handleRemove(items)} className="btn btn-primary hover:border-b-sky-950 w-24 ">Remove Book</button>
+                    </div>
                   </li>
-
-
+                  
               )}
               </ul>
             </li>

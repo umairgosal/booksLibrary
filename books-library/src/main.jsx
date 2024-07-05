@@ -9,10 +9,8 @@ import store from './store/index'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Fragment>
-
-  <Provider store={store}>
-    <App />
-  </Provider>
-
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Fragment>
 )

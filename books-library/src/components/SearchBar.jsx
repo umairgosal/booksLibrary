@@ -38,7 +38,7 @@ function SearchBar(){
 
     return(
         <>
-            <form className="flex items-center bg-white border border-gray-200 rounded-2xl m-5 mb-10 shadow-md dark:bg-black dark:border-gray-700">
+            <form className="grid grid-flow-col justify-center items-center">
                 <label className="input input-bordered flex items-center gap-96 m-4">
                     <input type="text" className="grow" placeholder="Enter the book name" onChange={saveQuery}/>
                     <svg
@@ -57,6 +57,7 @@ function SearchBar(){
                     setBtnPress(!btnPress)
                 }}>search</button>
             </form>
+            {/* <div className="divider divider-neutral"></div> */}
             <Card book={bookData}></Card>
         </>
     );

@@ -7,6 +7,7 @@ function Footer(){
         //     <aside className="mt-auto mb-0">
 
         <footer className="footer footer-center bg-base-900 text-base-content rounded p-10 mt-8">
+          <div className="mt-auto mb-0">
             <Stats></Stats>
             <nav className="grid grid-flow-col gap-4">
               <a className="link link-hover">About us</a>
@@ -54,6 +55,7 @@ function Footer(){
             <aside>
               <p>Copyright © ${new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
             </aside>
+            </div>
         </footer>
     );
 }
