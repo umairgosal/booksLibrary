@@ -52,7 +52,7 @@ function SearchBar(){
                         clipRule="evenodd" />
                     </svg>
                 </label>
-                <button className="btn btn-primary hover:border-b-sky-950" onClick={(e)=>{
+                <button className="btn btn-primary bg-blue-600 hover:bg-blue-800 hover:border-b-sky-950" onClick={(e)=>{
                     e.preventDefault()
                     setBtnPress(!btnPress)
                 }}>search</button>

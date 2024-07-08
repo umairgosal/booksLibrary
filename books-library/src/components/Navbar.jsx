@@ -45,7 +45,7 @@ function Navbar() {
                     />
                   </div>
                   <div className="flex justify-start">
-                    <h1 className="text-gray-300 hover:text-white hover:bg-emerald-400 justify-items-start">
+                    <h1 className="text-gray-300 hover:text-blue-600 justify-items-start rounded-xl p-1">
                       Books Library
                     </h1>
                   </div>
@@ -60,7 +60,7 @@ function Navbar() {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white hover:bg-emerald-600': 'text-gray-300 hover:bg-emerald-400 hover:text-white',
+                          item.current ? 'bg-gray-900 text-white hover:bg-blue-600 hover:text-black': 'text-gray-300 hover:bg-blue-400 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium',
                         )}
                         aria-current={item.current ? 'page' : undefined}

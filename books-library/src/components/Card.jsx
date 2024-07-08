@@ -19,7 +19,7 @@ const Card = ({book}) => {
   //   }
   // }
   const handleClick = (items) => {
-    dispatch(addToRead(items))
+        dispatch(addToRead(items))
   }
   const showBookOverview = (itemss)=>{
     setNewBook(itemss)

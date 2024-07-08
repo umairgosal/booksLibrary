@@ -10,6 +10,7 @@ function ToRead(){
   // const [toReadBooks, setToReadBooks] = useState(["one", "two", "three"])
 
   const toReadBooks = useSelector((state)=>state?.book?.addToReadItems);
+  const uniqueToReadBooks = [...new Set(toReadBooks)]
   console.log("To Read",toReadBooks)
   const dispatch = useDispatch()
 
@@ -30,11 +31,11 @@ function ToRead(){
             <li>
               <h2 className="menu-title">Books to read</h2>
               <ul className="w-96">
-              {toReadBooks?.map((items)=>
-                  <li className="flex flex-row justify-between items-center" key={items.id}><Link to={items?.accessInfo?.epub?.downloadLink} target="_blank">{items?.volumeInfo?.title}</Link>
+              {uniqueToReadBooks?.map((items)=>
+                  <li className="flex flex-row justify-between items-center" key={items.id}><Link to={items?.accessInfo?.epub?.downloadLink} target="_blank">{items?.volumeInfo?.title.substring(0,30)}</Link>
                     {/* <button className="btn btn-primary hover:border-b-sky-950 w-24 m-1">Add Book</button> */}
                     <div className="row-span-2 flex justify-end">
-                      <button onClick={()=>handleRemove(items)} className="btn btn-primary hover:border-b-sky-950 w-24 ">Remove Book</button>
+                      <button onClick={()=>handleRemove(items)} className="btn btn-primary bg-blue-600 hover:bg-blue-800 hover:border-b-sky-950 w-24 ">Remove Book</button>
                     </div>
                   </li>
                   
