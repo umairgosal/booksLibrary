@@ -17,6 +17,7 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
+    <div>
     <Disclosure as="nav" className="bg-gray-950">
       {({ open }) => (
         <>
@@ -44,13 +45,13 @@ function Navbar() {
                     />
                   </div>
                   <div className="flex justify-start">
-                    <h1 className="text-gray-300 hover:bg-gray-700 hover:text-white justify-items-start">
+                    <h1 className="text-gray-300 hover:text-white hover:bg-emerald-400 justify-items-start">
                       Books Library
                     </h1>
                   </div>
-                  <div>
+                  {/* <div>
                     <img className='h-14 ml-6' src="https://d36urhup7zbd7q.cloudfront.net/anonymous_user/no_sig_172016534358/77fdb087-94c3-4287-b777-7ed9a72bf8d7/signoff.gif?ck=1720165343.58" alt="" />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -59,7 +60,7 @@ function Navbar() {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          item.current ? 'bg-gray-900 text-white hover:bg-emerald-600': 'text-gray-300 hover:bg-emerald-400 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium',
                         )}
                         aria-current={item.current ? 'page' : undefined}
@@ -154,6 +155,7 @@ function Navbar() {
         </>
       )}
     </Disclosure>
+    </div>
   )
 }
 
