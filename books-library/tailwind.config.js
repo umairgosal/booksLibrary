@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+    /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui"
 
 const daisyui = require('daisyui')

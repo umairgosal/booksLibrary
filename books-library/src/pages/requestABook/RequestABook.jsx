@@ -37,7 +37,7 @@ function RequestABook(){
     <div className='relative'>
       <img className="opacity-20" src={wallpaper3} alt="lala" />
       <button className='btn-primary absolute bottom-[56rem] right-[56rem] bg-emerald-400 text-white pl-5 pr-5 rounded-2xl' onClick={handleClick}>Enter Signature</button>
-      <img className='absolute bottom-[85rem] right-[90rem] size-24' hidden={!image} src={image} alt="" />
+      <img className='absolute bottom-[85rem] right-[90rem] size-24 ' hidden={!image} src={image} alt="" />
     </div>
 
 
